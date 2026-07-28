@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ресторан над океаном — Эксклюзивная гастрономия</title>
+  <meta name="description" content="Эксклюзивный ресторан на краю скалы, где гастрономия встречается с бесконечностью.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Video layer -->
+  <div class="video-container">
+    <video id="bg-video" autoplay muted loop playsinline preload="auto" poster="poster.jpg">
+      <source src="video.webm" type="video/webm">
+      <source src="video.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Overlay gradient for text readability -->
+  <div class="overlay"></div>
+
+  <!-- Scroll sections -->
+  <div class="scroll-wrapper">
+
+    <!-- Section 1 -->
+    <section class="scroll-section" data-section="1">
+      <div class="section-content hero-content">
+        <h1 class="section-title hero-title">Ресторан над океаном</h1>
+        <p class="section-subtitle hero-subtitle">Эксклюзивный ресторан на краю скалы, где гастрономия встречается с бесконечностью.</p>
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="scroll-section" data-section="2">
+      <div class="section-content">
+        <h2 class="section-title">Архитектура вкуса</h2>
+        <p class="section-subtitle">Панорамные окна, натуральные материалы и абсолютное ощущение свободы.</p>
+      </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="scroll-section" data-section="3">
+      <div class="section-content">
+        <h2 class="section-title">Закат внутри тарелки</h2>
+        <p class="section-subtitle">Каждый вечер солнце становится частью вашего ужина.</p>
+      </div>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="scroll-section" data-section="4">
+      <div class="section-content">
+        <h2 class="section-title">Только вы и океан</h2>
+        <p class="section-subtitle">Полная приватность, просторные террасы и бесконечный горизонт.</p>
+      </div>
+    </section>
+
+    <!-- Section 5 -->
+    <section class="scroll-section" data-section="5">
+      <div class="section-content">
+        <h2 class="section-title">Вечер, который вы запомните</h2>
+        <p class="section-subtitle">Учебный концепт ресторана мирового уровня.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+  </div>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

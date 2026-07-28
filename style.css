@@ -1,0 +1,323 @@
+/* ========================================
+   Restaurant Over Ocean — Styles
+   ======================================== */
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --color-white: #ffffff;
+  --color-white-90: rgba(255, 255, 255, 0.9);
+  --color-white-60: rgba(255, 255, 255, 0.6);
+  --color-white-20: rgba(255, 255, 255, 0.2);
+  --color-black: #000000;
+  --color-black-40: rgba(0, 0, 0, 0.4);
+  --color-black-60: rgba(0, 0, 0, 0.6);
+}
+
+html {
+  scroll-behavior: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-black);
+  color: var(--color-white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Video Container — Fixed full-screen background */
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  will-change: transform;
+}
+
+/* Use GPU-accelerated transforms and avoid subpixel jitter */
+.video-container,
+.video-container video {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+
+/* Dark overlay for text readability */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.15) 40%,
+    rgba(0, 0, 0, 0.15) 60%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Scroll Wrapper — Creates scroll height */
+.scroll-wrapper {
+  position: relative;
+  z-index: 3;
+}
+
+/* Individual Scroll Section */
+.scroll-section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Section Content */
+.section-content {
+  text-align: center;
+  max-width: 900px;
+  padding: 0 40px;
+  opacity: 0;
+  transform: translateY(60px);
+  will-change: transform, opacity;
+}
+
+/* Section Title */
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.8rem, 7vw, 6.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+  margin-bottom: 1.2em;
+  text-shadow: 0 2px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Section Subtitle */
+.section-subtitle {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  line-height: 1.7;
+  color: var(--color-white-60);
+  max-width: 600px;
+  margin: 0 auto;
+  letter-spacing: 0.02em;
+}
+
+.hero-content {
+  max-width: 980px;
+  padding: 3rem 3.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 32px;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+.hero-title {
+  font-size: clamp(3.2rem, 8vw, 7rem);
+  margin-bottom: 0.7em;
+  text-shadow: 0 6px 40px rgba(0, 0, 0, 0.45);
+}
+
+.hero-subtitle {
+  font-size: clamp(1.05rem, 2.1vw, 1.35rem);
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 760px;
+}
+
+/* First section title override — bigger impact */
+[data-section="1"] .section-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-section="1"] .section-title {
+  font-weight: 400;
+}
+
+[data-section="1"] .section-subtitle {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  color: var(--color-white-60);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Last section — stays visible */
+[data-section="5"] .section-content {
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+[data-section="5"] .section-title {
+  font-weight: 300;
+  font-style: italic;
+}
+
+[data-section="5"] .section-subtitle {
+  margin-top: 2em;
+  padding-top: 2em;
+  border-top: 1px solid var(--color-white-20);
+  display: inline-block;
+  font-size: clamp(0.85rem, 1.4vw, 1rem);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-white-60);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+.scroll-indicator.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--color-white-60), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scaleY(0.7);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+/* ========================================
+   Responsive — Tablet
+   ======================================== */
+@media (max-width: 1024px) {
+  .section-content {
+    padding: 0 32px;
+    max-width: 700px;
+  }
+
+  .hero-content {
+    padding: 2.4rem 2rem;
+    max-width: 760px;
+  }
+
+  .section-title {
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+  }
+
+  .scroll-indicator {
+    bottom: 30px;
+  }
+}
+
+/* ========================================
+   Responsive — Mobile
+   ======================================== */
+@media (max-width: 640px) {
+  .section-content {
+    padding: 0 24px;
+    max-width: 100%;
+  }
+
+  .hero-content {
+    padding: 1.6rem 1.25rem;
+    border-radius: 24px;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 8vw, 3.2rem);
+    letter-spacing: -0.01em;
+  }
+
+  .section-subtitle {
+    font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+    line-height: 1.6;
+  }
+
+  [data-section="1"] .section-subtitle {
+    font-size: clamp(0.8rem, 3vw, 0.95rem);
+  }
+
+  [data-section="5"] .section-subtitle {
+    font-size: clamp(0.75rem, 2.5vw, 0.85rem);
+  }
+
+  .scroll-indicator {
+    bottom: 24px;
+  }
+
+  .scroll-line {
+    height: 40px;
+  }
+}
+
+/* ========================================
+   Reduced Motion — Accessibility
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-line {
+    animation: none;
+  }
+
+  .section-content {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ========================================
+   Performance
+   ======================================== */
+.video-container video,
+.section-content,
+.scroll-line {
+  will-change: transform;
+}
+
+.section-content {
+  will-change: opacity, transform;
+}
